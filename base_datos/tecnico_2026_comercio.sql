@@ -72,6 +72,32 @@ CREATE TABLE `departamento_join` (
   `presupuesto_departamento` int(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `departamento_join`
+--
+
+INSERT INTO `departamento_join` (`codigo_departamento`, `nombre_departemento`, `presupuesto_departamento`) VALUES
+(1, 'Ventas', 950000),
+(2, 'Compras', 780000),
+(3, 'Logistica', 860000),
+(4, 'Contabilidad', 830000),
+(5, 'Recursos Humanos', 720000),
+(6, 'Marketing', 910000),
+(7, 'Tecnologia', 1200000),
+(8, 'Atencion al Cliente', 690000),
+(9, 'Operaciones', 980000),
+(10, 'Tesoreria', 770000),
+(11, 'Auditoria', 810000),
+(12, 'Produccion', 1150000),
+(13, 'Calidad', 740000),
+(14, 'Bodega', 700000),
+(15, 'Distribucion', 930000),
+(16, 'Investigacion', 1250000),
+(17, 'Planeacion', 840000),
+(18, 'Comercio Exterior', 1020000),
+(19, 'Juridica', 760000),
+(20, 'Gerencia', 1300000);
+
 -- --------------------------------------------------------
 
 --
@@ -126,6 +152,32 @@ CREATE TABLE `empleado_join` (
   `apellido2_join` varchar(100) NOT NULL,
   `codigo_departamento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `empleado_join`
+--
+
+INSERT INTO `empleado_join` (`codigo_join`, `nif_join`, `nombre_join`, `apellido1_join`, `apellido2_join`, `codigo_departamento`) VALUES
+(1, 'NIF1001', 'Carlos', 'Mendez', 'Rojas', 1),
+(2, 'NIF1002', 'Paula', 'Diaz', 'Gomez', 2),
+(3, 'NIF1003', 'Jorge', 'Pineda', 'Lopez', 3),
+(4, 'NIF1004', 'Carolina', 'Ruiz', 'Moreno', 4),
+(5, 'NIF1005', 'Diego', 'Mora', 'Castro', 5),
+(6, 'NIF1006', 'Laura', 'Vega', 'Soto', 6),
+(7, 'NIF1007', 'Andres', 'Perez', 'Silva', 7),
+(8, 'NIF1008', 'Valentina', 'Cruz', 'Herrera', 8),
+(9, 'NIF1009', 'Miguel', 'Torres', 'Rincon', 9),
+(10, 'NIF1010', 'Daniela', 'Ortega', 'Navarro', 10),
+(11, 'NIF1011', 'Camilo', 'Leon', 'Parra', 11),
+(12, 'NIF1012', 'Natalia', 'Ramos', 'Caro', 12),
+(13, 'NIF1013', 'Sebastian', 'Garcia', 'Vargas', 13),
+(14, 'NIF1014', 'Juliana', 'Mejia', 'Gil', 14),
+(15, 'NIF1015', 'Santiago', 'Quintero', 'Arias', 15),
+(16, 'NIF1016', 'Manuela', 'Bermudez', 'Reyes', 16),
+(17, 'NIF1017', 'Felipe', 'Suarez', 'Pardo', 17),
+(18, 'NIF1018', 'Mariana', 'Valencia', 'Buitrago', 18),
+(19, 'NIF1019', 'Esteban', 'Cardona', 'Salazar', 19),
+(20, 'NIF1020', 'Tatiana', 'Bonilla', 'Duarte', 20);
 
 -- --------------------------------------------------------
 
@@ -210,7 +262,7 @@ INSERT INTO `producto` (`id_producto`, `nom_producto`, `precio_unidad_producto`,
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id_cliente`),
-  ADD UNIQUE KEY `identificacion_cliente` (`identificacion_cliente`);
+  ADD UNIQUE KEY `identification_cliente` (`identificacion_cliente`);
 
 --
 -- Indices de la tabla `departamento_join`
