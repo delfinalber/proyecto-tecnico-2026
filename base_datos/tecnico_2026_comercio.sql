@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-05-2026 a las 23:18:47
+-- Tiempo de generación: 07-05-2026 a las 00:21:03
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -262,7 +262,7 @@ INSERT INTO `producto` (`id_producto`, `nom_producto`, `precio_unidad_producto`,
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id_cliente`),
-  ADD UNIQUE KEY `identification_cliente` (`identificacion_cliente`);
+  ADD UNIQUE KEY `identificacion_cliente` (`identificacion_cliente`);
 
 --
 -- Indices de la tabla `departamento_join`
@@ -312,13 +312,13 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `departamento_join`
 --
 ALTER TABLE `departamento_join`
-  MODIFY `codigo_departamento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codigo_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `empleado_join`
 --
 ALTER TABLE `empleado_join`
-  MODIFY `codigo_join` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codigo_join` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
