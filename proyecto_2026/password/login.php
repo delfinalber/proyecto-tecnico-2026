@@ -2,41 +2,45 @@
 
 include('conexion.php');
 
-$usuario      = $_POST['usuario'];
-$contrasena   = $_POST['contrasena'];
-//$sesion_login = true;
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+	header('Location: ./Carlos/index.html');
+	exit();
+}
 
-ini_set('display_errors', 'off');
-ini_set('display_startup_errors', 'off');
-error_reporting(0);
+$usuario = isset($_POST['usuario']) ? trim($_POST['usuario']) : '';
+$contrasena = isset($_POST['contrasena']) ? trim($_POST['contrasena']) : '';
 
-$url= "https://www.lanacion.com.co/";
-//$url = "http://127.0.0.1/password/carlos/index.html";
+if ($usuario === '' || $contrasena === '') {
+	echo 'Usuario y contraseña son obligatorios';
+	exit();
+}
 
+if (isset($link) && $link) {
+	$query = 'SELECT id_users FROM users WHERE usuario_users = ? AND contrasena_users = ? LIMIT 1';
+	$stmt = mysqli_prepare($link, $query);
 
-//$consulta = mysqli_query ($link, "SELECT * FROM users WHERE ususario = '$usuario' AND contrasena = '$contrasena'");
+	if (!$stmt) {
+		echo 'Error al preparar la consulta';
+		mysqli_close($link);
+		exit();
+	}
 
-$query = "SELECT * FROM users WHERE usuario ='$usuario' AND contrasena = '$contrasena'";
-$q = mysqli_query($link, $query);
-try{
+	mysqli_stmt_bind_param($stmt, 'ss', $usuario, $contrasena);
+	mysqli_stmt_execute($stmt);
+	mysqli_stmt_store_result($stmt);
 
-	if(mysqli_result($q, 0))
-	{$result = mysqli_result($q, 0);
+	if (mysqli_stmt_num_rows($stmt) > 0) {
+		header('Location: ./Carlos/index.html');
+		mysqli_stmt_close($stmt);
+		mysqli_close($link);
+		exit();
+	}
 
-		//header("Location: https://www.lanacion.com.co/", true, 301);
-		//exit();
-		
-		//echo '<script type="text/javascript">
-          //window.location = "http://www.google.com/"
-      //</scrit>';
-
-		//echo "<script>location.href= '$url'</script>";
-
-		//echo "<script> window.location.href = $url; </script>";
-		  //echo "Usuario Valido Correctamente";
-	}else
-		echo "Usuario o Contraseña Erroneos";
-	}catch(Exception $error) {}
-
+	mysqli_stmt_close($stmt);
 	mysqli_close($link);
+	echo 'Usuario o contraseña incorrectos';
+	exit();
+}
+
+echo 'Error de conexión a la base de datos';
 ?>
