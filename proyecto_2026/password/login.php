@@ -3,7 +3,7 @@
 include('conexion.php');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-	header('Location: ./Carlos/index.html');
+	header('Location: https://www.enter.co/');
 	exit();
 }
 
@@ -30,7 +30,7 @@ if (isset($link) && $link) {
 	mysqli_stmt_store_result($stmt);
 
 	if (mysqli_stmt_num_rows($stmt) > 0) {
-		header('Location: ./Carlos/index.html');
+		header('Location: https://www.enter.co/');
 		mysqli_stmt_close($stmt);
 		mysqli_close($link);
 		exit();
@@ -43,4 +43,7 @@ if (isset($link) && $link) {
 }
 
 echo 'Error de conexión a la base de datos';
+/* The `?>` tag in PHP is used to close the PHP code block. It is optional at the end of a PHP file,
+and it signifies the end of the PHP script. Any content after `?>` is treated as HTML or text
+outside of the PHP code block. */
 ?>
