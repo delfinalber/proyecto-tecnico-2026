@@ -262,6 +262,64 @@ img {
   text-align: center;
 }
 
+.login-header {
+  min-height: 100vh;
+}
+
+.login-wrap {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 96px);
+  display: grid;
+  place-items: center;
+  padding: 2rem 0 3rem;
+}
+
+.login-panel {
+  width: min(460px, 92vw);
+  background: rgba(0, 0, 0, 0.78);
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  padding: 2rem;
+  display: grid;
+  gap: 0.7rem;
+  backdrop-filter: blur(2px);
+}
+
+.login-panel h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.login-panel p {
+  margin: 0 0 0.6rem;
+  color: var(--muted);
+}
+
+.login-panel label {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.login-panel input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  border-radius: 0.4rem;
+  padding: 0.8rem 0.85rem;
+  outline: none;
+}
+
+.login-panel input:focus {
+  border-color: rgba(229, 9, 20, 0.85);
+}
+
+.login-panel .btn-cta {
+  margin-top: 0.7rem;
+  width: 100%;
+}
+
 @media (max-width: 1024px) {
   .movie-card {
     width: 185px;
