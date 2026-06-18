@@ -1,0 +1,297 @@
+/*
+ * Copyright (c) 2026 . All rights reserved.
+ */
+
+.banner {
+	width: 100%;
+	overflow: hidden;
+}
+
+.banner img {
+	width: 100%;
+	height: auto;
+	object-fit: contain;
+	display: block;
+	transition: transform 0.35s ease;
+    
+}
+
+.banner:hover img {
+	transform: scale(1.08);
+}
+
+:root {
+	--pizza-negro: #0f090a;
+	--pizza-negro-suave: #1a1113;
+	--pizza-naranja: #ff8b1a;
+	--pizza-amarillo: #ffc21a;
+	--pizza-rojo: #d90a0a;
+	--pizza-rojo-profundo: #8f0909;
+	--pizza-blanco: #f7f5f3;
+	--pizza-gris: #e7e2de;
+}
+
+/* Nav con paleta del banner */
+.nav-pizzeria {
+	background: linear-gradient(90deg, var(--pizza-negro) 0%, var(--pizza-rojo-profundo) 48%, var(--pizza-negro) 100%);
+	border-top: 3px solid var(--pizza-naranja);
+	border-bottom: 3px solid var(--pizza-rojo);
+	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.32);
+}
+
+.nav-pizzeria .navbar-brand {
+	color: var(--pizza-naranja);
+	font-weight: 700;
+	letter-spacing: 0.06rem;
+	text-transform: uppercase;
+}
+
+.nav-pizzeria .navbar-brand:hover,
+.nav-pizzeria .navbar-brand:focus {
+	color: var(--pizza-amarillo);
+}
+
+.nav-pizzeria .nav-link {
+	color: var(--pizza-blanco);
+	font-weight: 600;
+}
+
+.nav-pizzeria .nav-link:hover,
+.nav-pizzeria .nav-link:focus,
+.nav-pizzeria .nav-link.active {
+	color: var(--pizza-amarillo);
+}
+
+.nav-pizzeria .navbar-toggler {
+	border-color: var(--pizza-naranja);
+	background-color: rgba(255, 139, 26, 0.08);
+}
+
+.nav-pizzeria .navbar-toggler:focus {
+	box-shadow: 0 0 0 0.2rem rgba(255, 139, 26, 0.25);
+}
+
+.nav-pizzeria .navbar-toggler-icon {
+	filter: brightness(0) invert(1);
+}
+
+.nav-pizzeria .form-control {
+	background-color: #f8f2ea;
+	border-color: #9b3d20;
+	color: #261306;
+}
+
+.nav-pizzeria .form-control:focus {
+	border-color: var(--pizza-naranja);
+	box-shadow: 0 0 0 0.2rem rgba(255, 139, 26, 0.25);
+}
+
+.nav-pizzeria .btn-outline-success {
+	border-color: var(--pizza-naranja);
+	color: var(--pizza-amarillo);
+}
+
+.nav-pizzeria .btn-outline-success:hover,
+.nav-pizzeria .btn-outline-success:focus {
+	background-color: var(--pizza-rojo);
+	border-color: var(--pizza-rojo);
+	color: var(--pizza-blanco);
+}
+
+/* Acordeon con paleta del banner */
+#accordionExample .accordion-item {
+	border: 1px solid #2d1c1f;
+	background-color: var(--pizza-negro-suave);
+	margin-bottom: 0.35rem;
+	overflow: hidden;
+}
+
+#accordionExample .accordion-button {
+	background-color: var(--pizza-negro);
+	color: var(--pizza-gris);
+	font-weight: 600;
+}
+
+#accordionExample .accordion-button:not(.collapsed) {
+	background: linear-gradient(90deg, var(--pizza-naranja) 0%, var(--pizza-amarillo) 100%);
+	color: #261306;
+	box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.18);
+}
+
+#accordionExample .accordion-button:focus {
+	box-shadow: 0 0 0 0.2rem rgba(255, 139, 26, 0.3);
+}
+
+#accordionExample .accordion-body {
+	background-color: #211417;
+	color: var(--pizza-blanco);
+	line-height: 1.6;
+}
+
+#accordionExample .accordion-button::after {
+	filter: brightness(0) invert(1);
+}
+
+#accordionExample .accordion-button:not(.collapsed)::after {
+	filter: brightness(0) saturate(100%) invert(11%) sepia(18%) saturate(2338%) hue-rotate(353deg) brightness(95%) contrast(95%);
+}
+
+/* Colapsar con paleta del banner */
+.colapsar-pizzeria {
+	background: radial-gradient(circle at top center, #2a1417 0%, var(--pizza-negro) 65%);
+	border: 1px solid #3a2528;
+	border-radius: 12px;
+	padding: 1.25rem;
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.btn-colapsar {
+	background: linear-gradient(90deg, var(--pizza-rojo) 0%, #b30d0d 100%);
+	border: 1px solid #ff2e2e;
+	color: var(--pizza-blanco);
+	font-weight: 700;
+	width: 100%;
+}
+
+.btn-colapsar:hover,
+.btn-colapsar:focus {
+	background: linear-gradient(90deg, #ef1414 0%, var(--pizza-rojo) 100%);
+	color: var(--pizza-blanco);
+	box-shadow: 0 0 0 0.2rem rgba(217, 10, 10, 0.3);
+}
+
+.collapse-card-width {
+	width: 100%;
+	min-height: 130px;
+	background-color: #2a1a1d;
+	color: var(--pizza-gris);
+	border: 1px solid #4a2a2f;
+	border-left: 4px solid var(--pizza-naranja);
+	text-align: justify;
+}
+
+/* Footer con paleta del banner */
+.footer-pizzeria {
+	margin-top: 1.5rem;
+	padding: 2rem 0;
+	background: linear-gradient(180deg, #1a0f11 0%, var(--pizza-negro) 100%);
+	border-top: 4px solid var(--pizza-naranja);
+}
+
+.footer-box {
+	background: rgba(255, 255, 255, 0.02);
+	border: 1px solid #382325;
+	border-radius: 14px;
+	padding: 1.5rem 1rem;
+}
+
+.footer-social {
+	display: flex;
+	justify-content: center;
+	gap: 0.9rem;
+	margin-bottom: 1rem;
+}
+
+.footer-social a {
+	color: var(--pizza-blanco);
+	font-size: 1.4rem;
+	width: 42px;
+	height: 42px;
+	border-radius: 50%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #2b171a;
+	border: 1px solid #5d2b2f;
+	transition: all 0.2s ease;
+}
+
+.footer-social a:hover,
+.footer-social a:focus {
+	color: var(--pizza-blanco);
+	background: linear-gradient(135deg, var(--pizza-rojo) 0%, #ff4a1f 100%);
+	border-color: #ff744f;
+	transform: translateY(-2px);
+}
+
+.footer-menu {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+	margin-bottom: 1rem;
+}
+
+.footer-menu a {
+	color: var(--pizza-gris);
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.footer-menu a:hover,
+.footer-menu a:focus {
+	color: var(--pizza-amarillo);
+}
+
+.footer-copy {
+	margin: 0;
+	color: #c9beb5;
+	font-size: 0.95rem;
+}
+
+/* Carrusel Styles */
+.media-column {
+	height: 500px;
+}
+
+#carouselExampleAutoplaying {
+	height: 500px;
+	overflow: hidden;
+}
+
+.carousel-inner {
+	height: 100%;
+}
+
+.carousel-item {
+	height: 100%;
+}
+
+.carousel-item img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: opacity 0.6s ease;
+}
+
+.promo-video {
+	width: 100%;
+	height: 100%;
+	display: block;
+	border: 0;
+}
+
+.accordion .accordion-body.accordion-justify {
+	text-align: justify;
+}
+
+.accordion .accordion-item .accordion-body {
+	text-align: justify !important;
+}
+
+@media (max-width: 991.98px) {
+	.media-column {
+		height: 320px;
+	}
+
+	#carouselExampleAutoplaying {
+		height: 320px;
+	}
+
+	.footer-social a {
+		width: 38px;
+		height: 38px;
+	}
+}
+
