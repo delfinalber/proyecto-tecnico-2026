@@ -11,6 +11,7 @@
         "barra",
         "Bebidas",
         "Bermudez",
+        "Boloñesa",
         "Bonilla",
         "Buitrago",
         "CAJA",
@@ -20,6 +21,7 @@
         "Caribe",
         "Caro",
         "Carrera",
+        "Carrucel",
         "codigo",
         "conexión",
         "Contabilidad",
@@ -41,6 +43,7 @@
         "Galletas",
         "Gerencia",
         "Granos",
+        "Hawaiana",
         "higienico",
         "Hogar",
         "Huevos",
@@ -54,6 +57,7 @@
         "Lacteos",
         "lata",
         "Leche",
+        "Napolitana",
         "Norte",
         "obligatorios",
         "Operaciones",
@@ -80,6 +84,8 @@
         "Tecnologia",
         "Tesoreria",
         "Valentina",
+        "Vegetareana",
+        "Vegetariana",
         "Volcado"
     ]
 }
