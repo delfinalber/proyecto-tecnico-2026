@@ -283,6 +283,11 @@
 :root {
 	--producto-card-min-size: 260px;
 	--producto-card-body-min-height: 220px;
+	--producto-fondo: #050608;
+	--producto-borde: #20252b;
+	--producto-texto: #f3f5f7;
+	--producto-texto-suave: #c7ced6;
+	--producto-acento: #9fdde1;
 }
 
 .tarjetas-fila {
@@ -308,6 +313,10 @@
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
+	background-color: var(--producto-fondo);
+	border: 1px solid var(--producto-borde);
+	border-radius: 10px;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
 .producto-card .carousel,
@@ -317,7 +326,7 @@
 	aspect-ratio: 1 / 1;
 	height: auto;
 	overflow: hidden;
-	background-color: #fff;
+	background-color: #0a0d10;
 }
 
 .producto-card .carousel-item img,
@@ -334,15 +343,39 @@
 	min-height: var(--producto-card-body-min-height);
 	display: flex;
 	flex-direction: column;
+	background-color: var(--producto-fondo);
+	color: var(--producto-texto);
+}
+
+.producto-card .card-title {
+	color: var(--producto-texto);
+	font-weight: 700;
 }
 
 .producto-card .card-text {
 	flex-grow: 1;
+	color: var(--producto-texto-suave);
 }
 
 .producto-card .btn {
 	margin-top: auto;
 	align-self: center;
+	background-color: transparent;
+	border: 1px solid var(--producto-texto);
+	color: var(--producto-texto);
+	font-weight: 600;
+}
+
+.producto-card .btn:hover,
+.producto-card .btn:focus {
+	background-color: var(--producto-acento);
+	border-color: var(--producto-acento);
+	color: #0b1114;
+}
+
+.producto-card .carousel-control-prev-icon,
+.producto-card .carousel-control-next-icon {
+	filter: brightness(0) invert(1);
 }
 
 @media (max-width: 991.98px) {
