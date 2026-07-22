@@ -42,13 +42,11 @@
                     </a>
                     
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                    </li>
+                    
                 </ul>
                 <form class="d-flex" role="search">
                     
-                    <button class="btn btn-outline-success" type="submit">Inicio Sesion</button>
+                  <button class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">Inicio Sesion</button>
                 </form>
                 </div>
             </div>
@@ -68,7 +66,7 @@
       <!--Inicio Formulario-->
         <form>
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label"><b>x Email</b></label>
+                  <label for="exampleInputEmail1" class="form-label"><b> Email</b></label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite su Correo">
                   <div id="emailHelp" class="form-text">No comparta el correo.</div>
                 </div>
@@ -98,6 +96,33 @@
   
 <br>
 
+<!-- Inicio Modal de Sesion -->
+<div class="modal fade login-modal" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Inicio de sesion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="usuarioLogin" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="usuarioLogin" placeholder="Digite su usuario" required>
+          </div>
+          <div class="mb-3">
+            <label for="contrasenaLogin" class="form-label">Contrasena</label>
+            <input type="password" class="form-control" id="contrasenaLogin" placeholder="Digite su contrasena" required>
+          </div>
+          <button type="submit" class="btn btn-login w-100">Entrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin Modal de Sesion -->
+
+
 <!-- Inicio Footer -->
 <footer class="footer-pizzeria">
   <div class="container">
@@ -113,8 +138,8 @@
       <nav class="footer-menu">
         <a href="../inicio/index.html">Inicio</a>
         <a href="./productos/productos.html">Productos</a>
-        <a href="#">Sobre nosotros</a> 
-        <a href="#">Contacto</a>
+        
+        <a href="./contactos.html">Contactos</a>
         <a href="#">Nuestro equipo</a>
       </nav>
 

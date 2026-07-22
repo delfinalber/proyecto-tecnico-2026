@@ -98,6 +98,65 @@
 	color: var(--pizza-blanco);
 }
 
+/* Modal de inicio de sesion con paleta del banner */
+.login-modal .modal-content {
+	background-image: linear-gradient(rgba(15, 9, 10, 0.88), rgba(15, 9, 10, 0.9)), url("./img-contactos/banner.png");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	border: 1px solid #5a2b2f;
+	border-top: 4px solid var(--pizza-naranja);
+	border-radius: 14px;
+	box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+	color: var(--pizza-blanco);
+}
+
+.login-modal .modal-header {
+	border-bottom: 1px solid #4a262b;
+}
+
+.login-modal .modal-title {
+	color: var(--pizza-amarillo);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.03rem;
+}
+
+.login-modal .btn-close {
+	filter: invert(1) brightness(1.3);
+}
+
+.login-modal .form-label {
+	color: var(--pizza-amarillo);
+	font-weight: 600;
+}
+
+.login-modal .form-control {
+	background-color: #f7ece1;
+	border: 1px solid #9f4a2a;
+	color: #24120a;
+}
+
+.login-modal .form-control:focus {
+	border-color: var(--pizza-naranja);
+	box-shadow: 0 0 0 0.2rem rgba(255, 139, 26, 0.25);
+}
+
+.login-modal .btn-login {
+	background: linear-gradient(90deg, var(--pizza-rojo) 0%, #f2551e 100%);
+	border: 1px solid #ff7d33;
+	color: var(--pizza-blanco);
+	font-weight: 700;
+}
+
+.login-modal .btn-login:hover,
+.login-modal .btn-login:focus {
+	background: linear-gradient(90deg, #ff661f 0%, var(--pizza-rojo) 100%);
+	border-color: var(--pizza-amarillo);
+	color: var(--pizza-blanco);
+	box-shadow: 0 0 0 0.2rem rgba(255, 194, 26, 0.18);
+}
+
 /* Acordeon con paleta del banner */
 #accordionExample .accordion-item {
 	border: 1px solid #2d1c1f;
@@ -237,6 +296,80 @@
 	margin: 0;
 	color: #c9beb5;
 	font-size: 0.95rem;
+}
+
+/* Mapa + formulario con paleta del banner */
+.container.text-center > .row {
+	align-items: stretch;
+	row-gap: 1rem;
+}
+
+.container.text-center > .row > .col-8,
+.container.text-center > .row > .col-4 {
+	display: flex;
+}
+
+.container.text-center .col-8 {
+	background: radial-gradient(circle at top left, #2a1417 0%, var(--pizza-negro) 75%);
+	border: 1px solid #47282c;
+	border-radius: 14px;
+	padding: 0.9rem;
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.28);
+}
+
+.container.text-center .col-8 iframe {
+	width: 100%;
+	min-height: 430px;
+	border: 2px solid var(--pizza-naranja) !important;
+	border-radius: 10px;
+	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+.container.text-center .col-4 form {
+	width: 100%;
+	background: linear-gradient(180deg, #261416 0%, #1a1113 100%);
+	border: 1px solid #5a2b2f;
+	border-left: 4px solid var(--pizza-naranja);
+	border-radius: 14px;
+	padding: 1.1rem;
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+	text-align: left;
+}
+
+.container.text-center .col-4 .form-label {
+	color: var(--pizza-amarillo);
+	margin-bottom: 0.35rem;
+	letter-spacing: 0.01rem;
+}
+
+.container.text-center .col-4 .form-control {
+	background-color: #f8efe6;
+	border: 1px solid #9f4a2a;
+	color: #261306;
+}
+
+.container.text-center .col-4 .form-control:focus {
+	border-color: var(--pizza-naranja);
+	box-shadow: 0 0 0 0.2rem rgba(255, 139, 26, 0.25);
+}
+
+.container.text-center .col-4 .form-text {
+	color: #decfbe;
+}
+
+.container.text-center .col-4 .btn-primary {
+	width: 100%;
+	font-weight: 700;
+	border: 1px solid #ff7d33;
+	background: linear-gradient(90deg, var(--pizza-rojo) 0%, #f2551e 100%);
+	color: var(--pizza-blanco);
+}
+
+.container.text-center .col-4 .btn-primary:hover,
+.container.text-center .col-4 .btn-primary:focus {
+	border-color: var(--pizza-amarillo);
+	background: linear-gradient(90deg, #ff661f 0%, var(--pizza-rojo) 100%);
+	box-shadow: 0 0 0 0.2rem rgba(255, 194, 26, 0.18);
 }
 
 /* Carrusel Styles */
@@ -379,6 +512,21 @@
 }
 
 @media (max-width: 991.98px) {
+	.container.text-center > .row > .col-8,
+	.container.text-center > .row > .col-4 {
+		width: 100%;
+		max-width: 100%;
+		flex: 0 0 100%;
+	}
+
+	.container.text-center .col-8 iframe {
+		min-height: 340px;
+	}
+
+	.container.text-center .col-4 form {
+		padding: 1rem;
+	}
+
 	.tarjetas-fila > .col {
 		flex-basis: calc(50% - 1rem);
 		max-width: calc(50% - 1rem);
@@ -395,6 +543,22 @@
 }
 
 @media (max-width: 575.98px) {
+	.container.text-center .col-8 {
+		padding: 0.6rem;
+	}
+
+	.container.text-center .col-8 iframe {
+		min-height: 260px;
+	}
+
+	.container.text-center .col-4 form {
+		padding: 0.85rem;
+	}
+
+	.container.text-center .col-4 .form-label {
+		font-size: 0.95rem;
+	}
+
 	.tarjetas-fila > .col {
 		flex-basis: 100%;
 		max-width: 100%;

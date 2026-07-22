@@ -98,6 +98,65 @@
 	color: var(--pizza-blanco);
 }
 
+/* Modal de inicio de sesion con paleta del banner */
+.login-modal .modal-content {
+	background-image: linear-gradient(rgba(15, 9, 10, 0.88), rgba(15, 9, 10, 0.9)), url("./img-productos/banner.png");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	border: 1px solid #5a2b2f;
+	border-top: 4px solid var(--pizza-naranja);
+	border-radius: 14px;
+	box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+	color: var(--pizza-blanco);
+}
+
+.login-modal .modal-header {
+	border-bottom: 1px solid #4a262b;
+}
+
+.login-modal .modal-title {
+	color: var(--pizza-amarillo);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.03rem;
+}
+
+.login-modal .btn-close {
+	filter: invert(1) brightness(1.3);
+}
+
+.login-modal .form-label {
+	color: var(--pizza-amarillo);
+	font-weight: 600;
+}
+
+.login-modal .form-control {
+	background-color: #f7ece1;
+	border: 1px solid #9f4a2a;
+	color: #24120a;
+}
+
+.login-modal .form-control:focus {
+	border-color: var(--pizza-naranja);
+	box-shadow: 0 0 0 0.2rem rgba(255, 139, 26, 0.25);
+}
+
+.login-modal .btn-login {
+	background: linear-gradient(90deg, var(--pizza-rojo) 0%, #f2551e 100%);
+	border: 1px solid #ff7d33;
+	color: var(--pizza-blanco);
+	font-weight: 700;
+}
+
+.login-modal .btn-login:hover,
+.login-modal .btn-login:focus {
+	background: linear-gradient(90deg, #ff661f 0%, var(--pizza-rojo) 100%);
+	border-color: var(--pizza-amarillo);
+	color: var(--pizza-blanco);
+	box-shadow: 0 0 0 0.2rem rgba(255, 194, 26, 0.18);
+}
+
 /* Acordeon con paleta del banner */
 #accordionExample .accordion-item {
 	border: 1px solid #2d1c1f;
