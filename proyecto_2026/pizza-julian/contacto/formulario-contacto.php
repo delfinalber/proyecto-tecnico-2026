@@ -25,7 +25,7 @@ function loadLocalEnv(string $path): array
     return $values;
 }
 
-$mysqli = new mysqli("localhost", "root", "", "pagina_santamaria");
+$mysqli = new mysqli("localhost", "root", "", "tecnico-2026-pagina");
 
 if ($mysqli->connect_error) {
     die("Error de conexión: " . $mysqli->connect_error);
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit("Por favor, completa el nombre, un correo válido y el mensaje.");
     }
 
-    $stmt = $mysqli->prepare("INSERT INTO formulario_contacto (correo_formulario, nombre_formulario, telefono_formulario, mensaje_formulario) VALUES (?, ?, ?, ?)");
+    $stmt = $mysqli->prepare("INSERT INTO `formulario-contacto` (correo_formulario, nombre_formulario, telefono_formulario, mensaje_formulario) VALUES (?, ?, ?, ?)");
     if ($stmt === false) {
         error_log("Error al preparar el registro del formulario: " . $mysqli->error);
         http_response_code(500);
@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Port = 587;
         $mail->CharSet = "UTF-8";
 
-        $mail->setFrom($smtpUsername, "Formulario CADEFI-HUILA");
+        $mail->setFrom($smtpUsername, "Formulario PIZZERIA-JULIAN");
         $mail->addAddress("delfin.alber@gmail.com");
         $mail->addReplyTo($email, $nombre);
         $mail->isHTML(false);
@@ -95,7 +95,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit("La información se guardó, pero no se pudo enviar el correo.");
     }
 
-    header("Location: contacto.html?envio=ok", true, 303);
+    header("Cache-Control: no-store, no-cache, must-revalidate");
+    header("Location: contactos.html?envio=ok", true, 303);
     exit;
 }
 
