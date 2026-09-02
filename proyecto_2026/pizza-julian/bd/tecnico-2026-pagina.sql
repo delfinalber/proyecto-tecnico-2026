@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-08-2026 a las 16:32:19
+-- Tiempo de generación: 02-09-2026 a las 23:59:06
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -37,6 +37,48 @@ CREATE TABLE `formulario-contacto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
+-- Volcado de datos para la tabla `formulario-contacto`
+--
+
+INSERT INTO `formulario-contacto` (`id_formulario`, `correo_formulario`, `nombre_formulario`, `telefono_formulario`, `mensaje_formulario`, `fecha-formulario`) VALUES
+(1, 'delfin.alber@gmail.com', 'Prueba Automatica', 3132345685, 'Mensaje de prueba desde agente', '2026-08-28 14:37:37'),
+(2, 'delfin.alber@gmail.com', 'DANNA LISETH PULIDO ZABALETA', 3132345685, 'Hola', '2026-08-28 14:40:29'),
+(3, 'delfin.alber@gmail.com', 'ALBER DELFIN PEÑA ORTIGOZA', 3132345685, 'Hola un saludo', '2026-08-28 14:48:52'),
+(4, 'g46113026@gmail.com', 'CUALQUIERA', 3213386504, 'Hola checho estamos en el Tecnico Programando con PHP.', '2026-09-02 18:30:40');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inicio`
+--
+
+CREATE TABLE `inicio` (
+  `id_inicio` int(11) NOT NULL,
+  `banner_inicio` varchar(200) NOT NULL,
+  `carru-1` varchar(200) NOT NULL,
+  `carru-2` varchar(200) NOT NULL,
+  `carru-3` varchar(200) NOT NULL,
+  `url_video_inicio` varchar(200) NOT NULL,
+  `acor1_titulo_inicio` varchar(150) NOT NULL,
+  `acor1_texto_inicio` varchar(500) NOT NULL,
+  `acor2_titulo_inicio` varchar(150) NOT NULL,
+  `acor2_texto_inicio` varchar(500) NOT NULL,
+  `acor3_titulo_inicio` varchar(150) NOT NULL,
+  `acor3_texto_inicio` varchar(500) NOT NULL,
+  `acor4_titulo_inicio` varchar(150) NOT NULL,
+  `acor4_texto_inicio` varchar(500) NOT NULL,
+  `acor5_titulo_inicio` varchar(150) NOT NULL,
+  `acor5_texto_inicio` varchar(500) NOT NULL,
+  `colapsar1_titulo_inicio` varchar(150) NOT NULL,
+  `colapsar1_texto_inicio` varchar(500) NOT NULL,
+  `colapsar2_titulo_inicio` varchar(150) NOT NULL,
+  `colapsar2_texto_inicio` varchar(500) NOT NULL,
+  `colapsar3_titulo_inicio` varchar(150) NOT NULL,
+  `colapsar3_texto_inicio` varchar(500) NOT NULL,
+  `numero_whatsapp` bigint(13) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -47,6 +89,12 @@ ALTER TABLE `formulario-contacto`
   ADD PRIMARY KEY (`id_formulario`);
 
 --
+-- Indices de la tabla `inicio`
+--
+ALTER TABLE `inicio`
+  ADD PRIMARY KEY (`id_inicio`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -54,7 +102,13 @@ ALTER TABLE `formulario-contacto`
 -- AUTO_INCREMENT de la tabla `formulario-contacto`
 --
 ALTER TABLE `formulario-contacto`
-  MODIFY `id_formulario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_formulario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `inicio`
+--
+ALTER TABLE `inicio`
+  MODIFY `id_inicio` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
