@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-09-2026 a las 23:59:06
+-- Tiempo de generación: 03-09-2026 a las 14:14:23
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -79,6 +79,13 @@ CREATE TABLE `inicio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
+-- Volcado de datos para la tabla `inicio`
+--
+
+INSERT INTO `inicio` (`id_inicio`, `banner_inicio`, `carru-1`, `carru-2`, `carru-3`, `url_video_inicio`, `acor1_titulo_inicio`, `acor1_texto_inicio`, `acor2_titulo_inicio`, `acor2_texto_inicio`, `acor3_titulo_inicio`, `acor3_texto_inicio`, `acor4_titulo_inicio`, `acor4_texto_inicio`, `acor5_titulo_inicio`, `acor5_texto_inicio`, `colapsar1_titulo_inicio`, `colapsar1_texto_inicio`, `colapsar2_titulo_inicio`, `colapsar2_texto_inicio`, `colapsar3_titulo_inicio`, `colapsar3_texto_inicio`, `numero_whatsapp`) VALUES
+(1, './img-inicio/inicio_6a996047b12d05.26024555.png', './img-inicio/inicio_6a996047b17a36.67873678.jpeg', './img-inicio/inicio_6a996047b19aa0.72194725.jpeg', './img-inicio/inicio_6a996047b1c323.69193053.jpeg', 'https://youtu.be/WidvoXBsDbI?si=PajjaLQf9DErYaQd', 'Margarita (Margherita)', 'La reina de las pizzas. Salsa de tomate, mozzarella fresca, albahaca y aceite de oliva Delfin.', 'Cuatro Quesos (Quattro Formaggi)', 'Una mezcla de quesos fundidos, usualmente mozzarella, gorgonzola (azul), fontina y parmesano.', 'Napolitana', 'Salsa de tomate, anchoas, ajo, orégano y aceite de oliva (tradicionalmente no lleva queso).', 'Mexicana', 'Incluye carne molida o chorizo, frijoles negros, jalapeños, cebolla y un toque de aguacate o cilantro.', 'Barbacoa (BBQ)', 'Sustituye la salsa de tomate por salsa barbacoa, acompañada de pollo, carne picada, cebolla y bacon.', 'Vegetariana', 'Cubierta de vegetales frescos o salteados, como pimientos, cebolla, champiñones, aceitunas y tomates cherry.', 'Cuatro Estaciones (Quattro Stagioni)', 'Dividida en cuatro secciones, cada una representando una estación con ingredientes distintos (por ejemplo: alcachofas, champiñones, jamón y albahaca).', 'Funghi (Champiñones)', 'Base de mozzarella con abundantes hongos salteados, a veces con un toque de aceite de trufa.', 573132345685);
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -108,7 +115,7 @@ ALTER TABLE `formulario-contacto`
 -- AUTO_INCREMENT de la tabla `inicio`
 --
 ALTER TABLE `inicio`
-  MODIFY `id_inicio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_inicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
