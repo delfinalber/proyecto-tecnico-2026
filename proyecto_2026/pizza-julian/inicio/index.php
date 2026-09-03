@@ -1,3 +1,64 @@
+<?php
+declare(strict_types=1);
+
+$mysqli = new mysqli("localhost", "root", "", "tecnico-2026-pagina");
+if ($mysqli->connect_error) {
+    die("Error de conexión: " . $mysqli->connect_error);
+}
+
+// Convierte enlaces de YouTube (watch, youtu.be, shorts) al formato /embed/ requerido por el iframe
+function normalizarUrlYoutubeEmbed(string $url): string
+{
+    $url = trim($url);
+    if ($url === "") {
+        return $url;
+    }
+    if (preg_match('~(?:youtu\.be/|youtube\.com/(?:embed/|watch\?v=|shorts/))([A-Za-z0-9_-]{6,})~i', $url, $coincidencia)) {
+        return "https://www.youtube.com/embed/" . $coincidencia[1];
+    }
+    return $url;
+}
+
+// Valores de respaldo si la tabla `inicio` aún no tiene registros
+$datosInicio = [
+    "banner_inicio" => "./img-inicio/banner.png",
+    "carru-1" => "./img-inicio/1.jpeg",
+    "carru-2" => "./img-inicio/2.jpeg",
+    "carru-3" => "./img-inicio/3.jpeg",
+    "url_video_inicio" => "https://www.youtube.com/embed/crdtrzZj3fo?si=__NqB1aheTtDAYfc",
+    "acor1_titulo_inicio" => "Margarita (Margherita)",
+    "acor1_texto_inicio" => "La reina de las pizzas. Salsa de tomate, mozzarella fresca, albahaca y aceite de oliva.",
+    "acor2_titulo_inicio" => "Cuatro Quesos (Quattro Formaggi)",
+    "acor2_texto_inicio" => "Una mezcla de quesos fundidos, usualmente mozzarella, gorgonzola (azul), fontina y parmesano.",
+    "acor3_titulo_inicio" => "Napolitana",
+    "acor3_texto_inicio" => "Salsa de tomate, anchoas, ajo, orégano y aceite de oliva (tradicionalmente no lleva queso).",
+    "acor4_titulo_inicio" => "Mexicana",
+    "acor4_texto_inicio" => "Incluye carne molida o chorizo, frijoles negros, jalapeños, cebolla y un toque de aguacate o cilantro.",
+    "acor5_titulo_inicio" => "Barbacoa (BBQ)",
+    "acor5_texto_inicio" => "Sustituye la salsa de tomate por salsa barbacoa, acompañada de pollo, carne picada, cebolla y bacon.",
+    "colapsar1_titulo_inicio" => "Vegetariana",
+    "colapsar1_texto_inicio" => "Cubierta de vegetales frescos o salteados, como pimientos, cebolla, champiñones, aceitunas y tomates cherry.",
+    "colapsar2_titulo_inicio" => "Funghi (Champiñones)",
+    "colapsar2_texto_inicio" => "Base de mozzarella con abundantes hongos salteados, a veces con un toque de aceite de trufa.",
+    "colapsar3_titulo_inicio" => "Cuatro Estaciones (Quattro Stagioni)",
+    "colapsar3_texto_inicio" => "Dividida en cuatro secciones, cada una representando una estación con ingredientes distintos (por ejemplo: alcachofas, champiñones, jamón y albahaca).",
+    "numero_whatsapp" => "573132345685",
+];
+
+$resultadoInicio = $mysqli->query("SELECT * FROM `inicio` ORDER BY id_inicio ASC LIMIT 1");
+if ($resultadoInicio && $resultadoInicio->num_rows > 0) {
+    $filaInicio = $resultadoInicio->fetch_assoc();
+    foreach ($datosInicio as $campo => $valorPorDefecto) {
+        $valor = trim((string) ($filaInicio[$campo] ?? ""));
+        $datosInicio[$campo] = $valor !== "" ? $valor : $valorPorDefecto;
+    }
+}
+
+$mysqli->close();
+
+$datosInicio["url_video_inicio"] = normalizarUrlYoutubeEmbed($datosInicio["url_video_inicio"]);
+$whatsappInicio = preg_replace('/\D/', '', $datosInicio["numero_whatsapp"]);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +74,7 @@
     <div class="container-fluid p-0 text-center">
         <div class="row g-0">
             <div class="banner col-12 p-0">
-               <img src="./img-inicio/banner.png" class="img-fluid" alt="...">
+               <img src="<?= htmlspecialchars($datosInicio["banner_inicio"], ENT_QUOTES) ?>" class="img-fluid" alt="...">
             </div>
             
         </div>
@@ -61,16 +122,13 @@
                     <div id="carouselExampleAutoplaying" class="carousel slide p-0" data-bs-ride="carousel">
                         <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                <img src="./img-inicio/1.jpeg" class="d-block w-100" alt="...">
+                                <img src="<?= htmlspecialchars($datosInicio["carru-1"], ENT_QUOTES) ?>" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                <img src="./img-inicio/2.jpeg" class="d-block w-100" alt="...">
+                                <img src="<?= htmlspecialchars($datosInicio["carru-2"], ENT_QUOTES) ?>" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                <img src="./img-inicio/3.jpeg" class="d-block w-100" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="./img-inicio/4.jpeg" class="d-block w-100" alt="...">
+                                <img src="<?= htmlspecialchars($datosInicio["carru-3"], ENT_QUOTES) ?>" class="d-block w-100" alt="...">
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -85,7 +143,7 @@
                 </div>
                     <div class="col-12 col-lg-4 p-0 media-column">
                         
-                        <iframe class="promo-video" src="https://www.youtube.com/embed/crdtrzZj3fo?si=__NqB1aheTtDAYfc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe class="promo-video" src="<?= htmlspecialchars($datosInicio["url_video_inicio"], ENT_QUOTES) ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         
                     </div>                
                 </div>
@@ -100,60 +158,60 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Margarita (Margherita)
+                            <?= htmlspecialchars($datosInicio["acor1_titulo_inicio"]) ?>
                         </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                         <div class="accordion-body accordion-justify">
-                            <strong>Margarita (Margherita).</strong> La reina de las pizzas. Salsa de tomate, mozzarella fresca, albahaca y aceite de oliva.
+                            <strong><?= htmlspecialchars($datosInicio["acor1_titulo_inicio"]) ?>.</strong> <?= htmlspecialchars($datosInicio["acor1_texto_inicio"]) ?>
                         </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                           Cuatro Quesos (Quattro Formaggi)
+                           <?= htmlspecialchars($datosInicio["acor2_titulo_inicio"]) ?>
                         </button>
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body accordion-justify">
-                            <strong>Cuatro Quesos (Quattro Formaggi).</strong> Una mezcla de quesos fundidos, usualmente mozzarella, gorgonzola (azul), fontina y parmesano.
+                            <strong><?= htmlspecialchars($datosInicio["acor2_titulo_inicio"]) ?>.</strong> <?= htmlspecialchars($datosInicio["acor2_texto_inicio"]) ?>
                         </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Napolitana
+                            <?= htmlspecialchars($datosInicio["acor3_titulo_inicio"]) ?>
                         </button>
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body accordion-justify">
-                            <strong>Napolitana.</strong> Salsa de tomate, anchoas, ajo, orégano y aceite de oliva (tradicionalmente no lleva queso).
+                            <strong><?= htmlspecialchars($datosInicio["acor3_titulo_inicio"]) ?>.</strong> <?= htmlspecialchars($datosInicio["acor3_texto_inicio"]) ?>
                         </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                           Mexicana
+                           <?= htmlspecialchars($datosInicio["acor4_titulo_inicio"]) ?>
                         </button>
                         </h2>
                         <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body accordion-justify">
-                            <strong>Mexicana.</strong> Incluye carne molida o chorizo, frijoles negros, jalapeños, cebolla y un toque de aguacate o cilantro.
+                            <strong><?= htmlspecialchars($datosInicio["acor4_titulo_inicio"]) ?>.</strong> <?= htmlspecialchars($datosInicio["acor4_texto_inicio"]) ?>
                         </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                           Barbacoa (BBQ)
+                           <?= htmlspecialchars($datosInicio["acor5_titulo_inicio"]) ?>
                         </button>
                         </h2>
                         <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body accordion-justify">
-                            <strong>Barbacoa (BBQ).</strong> Sustituye la salsa de tomate por salsa barbacoa, acompañada de pollo, carne picada, cebolla y bacon.
+                            <strong><?= htmlspecialchars($datosInicio["acor5_titulo_inicio"]) ?>.</strong> <?= htmlspecialchars($datosInicio["acor5_texto_inicio"]) ?>
                         </div>
                         </div>
                     </div>
@@ -170,13 +228,13 @@
     <div class="col">
       <p>
   <button class="btn btn-colapsar" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTecnico" aria-expanded="false" aria-controls="collapseTecnico">
-    Vegetariana
+    <?= htmlspecialchars($datosInicio["colapsar1_titulo_inicio"]) ?>
   </button>
 </p>
 <div class="collapse-min-height">
   <div class="collapse collapse-horizontal" id="collapseTecnico">
     <div class="card card-body collapse-card-width">
-      Cubierta de vegetales frescos o salteados, como pimientos, cebolla, champiñones, aceitunas y tomates cherry.
+      <?= htmlspecialchars($datosInicio["colapsar1_texto_inicio"]) ?>
     </div>
   </div>
 </div>
@@ -184,13 +242,13 @@
     <div class="col order-5">
       <p>
   <button class="btn btn-colapsar" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDelfin" aria-expanded="false" aria-controls="collapseDelfin">
-    Cuatro Estaciones (Quattro Stagioni)
+    <?= htmlspecialchars($datosInicio["colapsar3_titulo_inicio"]) ?>
   </button>
 </p>
 <div class="collapse-min-height">
   <div class="collapse collapse-horizontal" id="collapseDelfin">
     <div class="card card-body collapse-card-width">
-      Dividida en cuatro secciones, cada una representando una estación con ingredientes distintos (por ejemplo: alcachofas, champiñones, jamón y albahaca).
+      <?= htmlspecialchars($datosInicio["colapsar3_texto_inicio"]) ?>
     </div>
   </div>
 </div>
@@ -198,14 +256,13 @@
     <div class="col order-1">
       <p>
   <button class="btn btn-colapsar" type="button" data-bs-toggle="collapse" data-bs-target="#collapseColegio" aria-expanded="false" aria-controls="collapseColegio">
-    Funghi (Champiñones)
+    <?= htmlspecialchars($datosInicio["colapsar2_titulo_inicio"]) ?>
   </button>
 </p>
 <div class="collapse-min-height">
   <div class="collapse collapse-horizontal" id="collapseColegio">
     <div class="card card-body collapse-card-width">
-      Base de mozzarella con abundantes hongos salteados, a veces con un toque de aceite de trufa. 
-
+      <?= htmlspecialchars($datosInicio["colapsar2_texto_inicio"]) ?>
     </div>
   </div>
 </div>
@@ -268,7 +325,7 @@
  <!-- Fin footer   -->
 <!-- Inicio boton flotante de whatsapp-->
     <!-- Enlace del Botón de WhatsApp (URL estática: este archivo es .html y no procesa PHP) -->
-    <a href="https://wa.me/573132345685?text=Hola%2C+quiero+m%C3%A1s+informaci%C3%B3n+acerca+de+las+PIZZA+JULIAN" class="whatsapp-float" target="_blank" rel="noopener" title="Enviar mensaje por WhatsApp" aria-label="Enviar mensaje por WhatsApp">
+    <a href="https://wa.me/<?= htmlspecialchars($whatsappInicio, ENT_QUOTES) ?>?text=Hola%2C+quiero+m%C3%A1s+informaci%C3%B3n+acerca+de+las+PIZZA+JULIAN" class="whatsapp-float" target="_blank" rel="noopener" title="Enviar mensaje por WhatsApp" aria-label="Enviar mensaje por WhatsApp">
      <i class="bi bi-whatsapp" aria-hidden="true"></i>
         <span class="visually-hidden">Enviar mensaje por WhatsApp</span>
     </a>

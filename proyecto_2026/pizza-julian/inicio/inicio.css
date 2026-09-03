@@ -340,6 +340,140 @@
 	}
 }
 
+/* Editor de contenido con paleta del banner */
+.editor-panel {
+	background: radial-gradient(circle at top center, #2a1417 0%, var(--pizza-negro) 65%);
+	border: 1px solid #3a2528;
+	border-radius: 12px;
+	padding: 1.5rem;
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+	color: var(--pizza-blanco);
+}
+
+.editor-panel h2 {
+	color: var(--pizza-amarillo);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.03rem;
+}
+
+.editor-card {
+	background-color: var(--pizza-negro-suave);
+	border: 1px solid #382325;
+	border-left: 4px solid var(--pizza-naranja);
+	border-radius: 10px;
+	color: var(--pizza-gris);
+}
+
+.editor-card .card-title {
+	color: var(--pizza-amarillo);
+	font-weight: 700;
+}
+
+.editor-alert {
+	border-radius: 10px;
+	border-left: 4px solid var(--pizza-naranja);
+}
+
+.btn-editar {
+	background: linear-gradient(90deg, var(--pizza-naranja) 0%, var(--pizza-amarillo) 100%);
+	border: 1px solid var(--pizza-naranja);
+	color: #261306;
+	font-weight: 700;
+}
+
+.btn-editar:hover,
+.btn-editar:focus {
+	background: linear-gradient(90deg, var(--pizza-amarillo) 0%, var(--pizza-naranja) 100%);
+	color: #261306;
+	box-shadow: 0 0 0 0.2rem rgba(255, 194, 26, 0.25);
+}
+
+.btn-eliminar {
+	background: linear-gradient(90deg, var(--pizza-rojo) 0%, var(--pizza-rojo-profundo) 100%);
+	border: 1px solid var(--pizza-rojo);
+	color: var(--pizza-blanco);
+	font-weight: 700;
+}
+
+.btn-eliminar:hover,
+.btn-eliminar:focus {
+	background: linear-gradient(90deg, #ef1414 0%, var(--pizza-rojo) 100%);
+	color: var(--pizza-blanco);
+	box-shadow: 0 0 0 0.2rem rgba(217, 10, 10, 0.3);
+}
+
+/* Modal editor con paleta del banner */
+.editor-modal .modal-content {
+	background-image: linear-gradient(rgba(15, 9, 10, 0.92), rgba(15, 9, 10, 0.94)), url("./img-inicio/banner.png");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	border: 1px solid #5a2b2f;
+	border-top: 4px solid var(--pizza-naranja);
+	border-radius: 14px;
+	box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+	color: var(--pizza-blanco);
+	overflow: hidden;
+}
+
+/* El formulario envuelve header/body/footer, así que hereda el layout flex que Bootstrap aplica a modal-content */
+.editor-modal .modal-content > form {
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+	max-height: 100%;
+	overflow: hidden;
+}
+
+.editor-modal .modal-body {
+	overflow-y: auto;
+}
+
+.editor-modal .modal-header,
+.editor-modal .modal-footer {
+	border-color: #4a262b;
+	flex-shrink: 0;
+}
+
+.editor-modal .modal-title {
+	color: var(--pizza-amarillo);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.03rem;
+}
+
+.editor-modal .btn-close {
+	filter: invert(1) brightness(1.3);
+}
+
+.editor-modal .form-label {
+	color: var(--pizza-amarillo);
+	font-weight: 600;
+}
+
+.editor-modal .form-control,
+.editor-modal textarea.form-control {
+	background-color: #f7ece1;
+	border: 1px solid #9f4a2a;
+	color: #24120a;
+}
+
+.editor-modal .form-control:focus {
+	border-color: var(--pizza-naranja);
+	box-shadow: 0 0 0 0.2rem rgba(255, 139, 26, 0.25);
+}
+
+.editor-modal fieldset legend {
+	color: var(--pizza-amarillo);
+	font-size: 1rem;
+	font-weight: 700;
+	border-bottom: 1px solid #4a262b;
+	padding-bottom: 0.25rem;
+	margin-bottom: 0.75rem;
+	margin-top: 1rem;
+}
+
 /* Carrusel Styles */
 .media-column {
 	height: 500px;
